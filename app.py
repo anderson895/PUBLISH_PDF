@@ -8,6 +8,17 @@ app = Flask(__name__)
 pdf_dir = os.path.join(os.path.dirname(__file__), 'static', 'pdf')
 pdf_filename = 'sequence-practice-problems.pdf'
 
+
+
+
+
+
+
+
+
+
+
+
 # Route to serve the PDF and dynamically set the title
 @app.route('/')
 def open_pdf():
@@ -22,6 +33,17 @@ def open_pdf():
             <head>
                 <title>{pdf_filename}</title>
                 <meta name="google-site-verification" content="mLf59s4voF-nhDphRX215iJRKv9MwssnZ2_78qtUxJA" />
+                <meta name="description" content="View and download the PDF file {pdf_filename} with ease on our platform jpdftest.">
+                <meta property="og:title" content="{pdf_filename}">
+                <meta property="og:description" content="View and download the PDF file {pdf_filename} easily on our platform.">
+                <meta property="og:url" content="https://publish-pdf.vercel.app/">
+                <meta property="og:type" content="website">
+                <meta property="og:image" content="URL_TO_IMAGE_THUMBNAIL">
+                <meta name="twitter:card" content="summary_large_image">
+                <meta name="twitter:title" content="{pdf_filename}">
+                <meta name="twitter:description" content="View and download the PDF file {pdf_filename} with ease.">
+                <meta name="twitter:image" content="URL_TO_IMAGE_THUMBNAIL">
+                <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
                 <style>
                     html, body {{
                         height: 100%;
@@ -36,15 +58,29 @@ def open_pdf():
                 </style>
             </head>
             <body>
-                <object data="/static/pdf/{pdf_filename}" type="application/pdf">
+                <object data="/static/pdf/{pdf_filename}" type="application/pdf" aria-label="PDF Viewer">
                     <p>Your browser does not support PDF viewing. <a href="/static/pdf/{pdf_filename}">Download the PDF</a>.</p>
                 </object>
             </body>
         </html>
     '''
 
+
     # Return the HTML response with the title and embedded PDF
     return Response(html_content, content_type='text/html')
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if __name__ == '__main__':
     # Automatically open the PDF URL when the app starts
