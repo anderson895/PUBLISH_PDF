@@ -18,29 +18,31 @@ def open_pdf():
     
     # HTML content with dynamic title, and full-screen PDF display
     html_content = f'''
-    <html>
-        <head>
-            <title>{pdf_filename}</title>
-            <style>
-                html, body {{
-                    height: 100%;
-                    margin: 0;
-                    padding: 0;
-                    overflow: hidden;
-                }}
-                object {{
-                    width: 100%;
-                    height: 100%;
-                }}
-            </style>
-        </head>
-        <body>
-            <object data="/static/pdf/{pdf_filename}" type="application/pdf">
-                <p>Your browser does not support PDF viewing. <a href="/static/pdf/{pdf_filename}">Download the PDF</a>.</p>
-            </object>
-        </body>
-    </html>
+        <html>
+            <head>
+                <title>{pdf_filename}</title>
+                <meta name="google-site-verification" content="mLf59s4voF-nhDphRX215iJRKv9MwssnZ2_78qtUxJA" />
+                <style>
+                    html, body {{
+                        height: 100%;
+                        margin: 0;
+                        padding: 0;
+                        overflow: hidden;
+                    }}
+                    object {{
+                        width: 100%;
+                        height: 100%;
+                    }}
+                </style>
+            </head>
+            <body>
+                <object data="/static/pdf/{pdf_filename}" type="application/pdf">
+                    <p>Your browser does not support PDF viewing. <a href="/static/pdf/{pdf_filename}">Download the PDF</a>.</p>
+                </object>
+            </body>
+        </html>
     '''
+
     # Return the HTML response with the title and embedded PDF
     return Response(html_content, content_type='text/html')
 
