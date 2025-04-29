@@ -38,12 +38,13 @@ def open_pdf():
                 <meta property="og:description" content="View and download the PDF file {pdf_filename} easily on our platform.">
                 <meta property="og:url" content="https://publish-pdf.vercel.app/">
                 <meta property="og:type" content="website">
-                <meta property="og:image" content="URL_TO_IMAGE_THUMBNAIL">
+                <meta property="og:image" content="https://publish-pdf.vercel.app/static/images/your-image.jpg">
                 <meta name="twitter:card" content="summary_large_image">
                 <meta name="twitter:title" content="{pdf_filename}">
                 <meta name="twitter:description" content="View and download the PDF file {pdf_filename} with ease.">
-                <meta name="twitter:image" content="URL_TO_IMAGE_THUMBNAIL">
+                <meta name="twitter:image" content="https://publish-pdf.vercel.app/static/images/your-image.jpg">
                 <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
+                <link rel="canonical" href="https://publish-pdf.vercel.app/" />
                 <style>
                     html, body {{
                         height: 100%;
@@ -55,15 +56,26 @@ def open_pdf():
                         width: 100%;
                         height: 100%;
                     }}
+                    .download-button {{
+                        display: inline-block;
+                        padding: 10px 20px;
+                        margin-top: 20px;
+                        background-color: #007bff;
+                        color: white;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }}
                 </style>
             </head>
             <body>
                 <object data="/static/pdf/{pdf_filename}" type="application/pdf" aria-label="PDF Viewer">
                     <p>Your browser does not support PDF viewing. <a href="/static/pdf/{pdf_filename}">Download the PDF</a>.</p>
                 </object>
+                <a href="/static/pdf/{pdf_filename}" class="download-button">Download PDF</a>
             </body>
         </html>
     '''
+
 
 
     # Return the HTML response with the title and embedded PDF
